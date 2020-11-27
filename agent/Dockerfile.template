@@ -1,0 +1,15 @@
+ARG BALENA_MACHINE_NAME_ARG=%%BALENA_MACHINE_NAME%%
+
+FROM balenalib/$BALENA_MACHINE_NAME_ARG-debian:run
+
+WORKDIR /rumble
+
+COPY download.sh download.sh
+RUN chmod +x download.sh
+
+RUN ./download.sh
+
+COPY start.sh start.sh
+RUN chmod +x start.sh
+
+ENTRYPOINT ["./start.sh"]

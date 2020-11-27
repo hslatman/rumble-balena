@@ -1,0 +1,13 @@
+version: "2.1"
+
+volumes:
+  agent-state: {}
+
+services:
+  rumble:
+    build:
+      context: ./agent
+      dockerfile: Dockerfile.template
+    network_mode: host
+    volumes:
+      - agent-state:/.rumble
